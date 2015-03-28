@@ -4,6 +4,22 @@
 #include <string>
 using namespace std;
 
+/*the linux below help to detect whetther the system is linux or windows and
+ * hence define a variable CLEAR accordingly for clear function
+ * on windows clear screen is done using system("cls")
+ * and on linux it is done using system("clear")
+ * so i made a common variable CLEAR...system(CLEAR) to take "cls" if its
+ * windows else take "clear if its linux */
+
+#ifdef __WIN32
+#define CLEAR "cls"
+#endif
+
+#ifdef linux
+#define CLEAR "clear"
+#endif
+
+
 class StudentRegistration
 {
     public:
@@ -68,7 +84,7 @@ int main()
     data.fillForm();
     cout<<"\nForm Submitted SuccessFully";
     getchar();
-    system("clear");
+    system(CLEAR);
     data.showDetails();
     getchar();
     return 0;
